@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    </head>
+<body>
+    <!--navbar starts-->
+    {%include 'academy/html/navbar.html' %}
+    <!---navbar ends-->
+
+    <!--form starts here-->
+     <!--for messages-->
+     {% if messages %}
+     {% for m in messages %}
+       
+     <!-- <h2> {{m}}</h2> -->
+     <div class="alert alert-{{m.tags}} alert-dismissible fade show" role="alert">
+         <strong>{{m}}</strong> 
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+ 
+     {% endfor %}
+     {%endif%}
+ 
+    
+    <form method="POST" action="/feedback/" class="needs-validation" novalidate>
+      {% csrf_token %}
+
+        <h2 style="color:crimson;margin-top: 5%; text-align: center;"> Your Feedback is Valuable For Us</h2>
+
+        <div class="w-50 p3" style="background-color:beige; margin-left:24%;margin-top: 5%;">
+        
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Name</label>
+          <input type="text" required class="form-control" name="txtname" placeholder="Your name">
+          <div class="invalid-feedback">
+            Please provide a username.
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Feedback</label>
+            <textarea required class="form-control" id="exampleFormControlTextarea1" rows="3" required name="txtfeedback"></textarea>
+            <div class="invalid-feedback">
+              you can't leave this field empty.
+            </div>
+            
+          </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Ratings</label>
+          <select required class="form-control" id="exampleFormControlSelect1" name="cmbrating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <div class="invalid-feedback">
+            Please provide a username.
+          </div>
+        </div>
+         <div class="form-group">
+            <input type="submit" name="btnSubmit" class="btnContact" value="Submit" />
+          </div>
+    </div>
+
+      </form>
+    
+      
+      
+      <!--form ends here-->
+
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+      <script src="{% static 'academy/js/validations.js' %}"> </script>
+    </body>
+</html>

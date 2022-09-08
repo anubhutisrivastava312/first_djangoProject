@@ -1,0 +1,103 @@
+{%extends 'tournaments/html/base_template.html'%}
+{%block title%}
+Enrollment
+{%endblock%}
+
+
+
+{%block content%}
+{%if messages %}
+{% for m in messages%}
+<!-- <h1 class="text-{{m.tags}}">{{m}}</h1> -->
+<div class="alert alert-{{m.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{m}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{%endfor%}
+
+
+{%endif%}
+
+  <center><h1 style="color:black; font-size: 50px; text-shadow: 4px 7px 5px white;">Enrollment Form</h1></center>
+  <form  method="POST" action="/academy_tournaments/enrollment/">
+    {% csrf_token %}
+
+   <div class="row justify-content-center  mt-5">
+     <div class="col-4 div-bg" >
+   <div class="mb-3">
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label" style="color:black;font-size:25px;">Name</label>
+      <input type="text" required="required" class="form-control" name="txtname" aria-describedby="emailHelp" id="txtusername">
+     
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" style="color:black;font-size:25px;">Age</label>
+      <input type="text" required="required" class="form-control" name="txtage" id="txtuserpass">
+      
+    </div>
+ 
+   <div class="mb-3">
+     <label for="exampleInputpassword" class="form-label" style="color:black;font-size:25px;">email</label>
+     <input type="email"  required class="form-control" name="txtemail" aria-describedby="passwordHelp">
+    
+   </div>
+ 
+   <label for="exampleInputId" class="form-label"style="color:black;font-size:25px;">Phone Number</label>
+   <input type="number"  class="form-control" name="txtphone" aria-describedby="IdHelp">
+   </div>
+   <select class="form-select" aria-label="Default select example" name="cmbcity"  style="color:black;font-size:25px;">
+    <option selected>City</option>
+    <option value="lko">Lucknow</option>
+    <option value="delhi">Delhi</option>
+    <option value="gurgaon">Gurgaon</option>
+    <option value="fzd">Faizabad</option>
+    <option value="agra">Agra</option>
+  </select>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black;font-size:25px;"> Address</label>
+    <textarea  required class="form-control" name="txtaddress" aria-describedby="emailHelp"></textarea>
+  
+  </div>
+
+
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black;font-size:25px;">Tournament Name</label>
+    <select class="form-select" name="tournament_name">
+      <option value="default"> Select Your Tournament</option>
+      {% for t in t_key %}
+      <option value="{{t.t_name}}"> {{t.t_name}}</option>
+      {%endfor%}
+    </select>
+   </div>
+
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black;font-size:25px;">Select Your Gender</label>
+    <input type="radio"  required class="form-check-input " name="gender" value="M"/>
+    <label class="form-check-label" for="MaleLabel">
+      Male
+    </label>
+    <input type="radio"  required class="form-check-input" name="gender" value="F"/>
+    <label class="form-check-label" for="FemaleLabel">
+      FeMale
+    </label>
+    
+  </div>
+
+   <!-- <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black;font-size:25px;">TransactionDetails</label>
+    <input type="text" required="required" class="form-control" name="txttransaction" aria-describedby="" id="txtusername">
+   </div>
+   <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" style="color:black;font-size:25px;">Your Age</label>
+    <input type="number" required="required" class="form-control" name="txtage" aria-describedby="" id="txtusername">
+   </div> -->
+
+
+  <button type="reset" class="btn btn-primary">Reset</button>
+  <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  {%endblock%}

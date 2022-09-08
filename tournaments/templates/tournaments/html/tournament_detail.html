@@ -1,0 +1,33 @@
+{%extends 'tournaments/html/base_template.html'%}
+{%block title%}
+tournament details 
+{%endblock%}
+
+
+{%block content%}
+<h1 style="color:brown;text-align:center"> Details are as follows</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Venue</th>
+        <th scope="col">StartDate</th>
+        <th scope="col">EndDate</th>
+        <th scope="col">AgeGroup</th>
+    
+      </tr>
+    </thead>
+    <tbody>
+        {%for t in t_data%}
+        <tr>
+            <th> {{t.t_name}}  </th>
+        
+        <th>{{t.t_venue}}</th>
+        <th>{{t.t_start_date}}</th>
+        <th>{{t.t_end_date}}</th>
+        <th>{{t.t_age_group}}</th>
+        </tr>
+        {%endfor%}
+        </tbody>
+        </table>
+        {%endblock%}

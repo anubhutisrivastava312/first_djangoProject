@@ -1,0 +1,65 @@
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!--navbar starts here-->
+    {%include 'academy/html/navbar.html' %}
+    <!--navbar ends here-->
+    <!--for messages-->
+    {%if messages %}
+{% for m in messages%}
+<!-- <h1 class="text-{{m.tags}}">{{m}}</h1> -->
+<div class="alert alert-{{m.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{m}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{%endfor%}
+
+
+{%endif%}
+<!--for messages ended-->
+    <h1 style="color:deeppink; text-align: center; margin-top: 20px;"> LOGIN FORM</h1>
+    <div class="row  mt-5" >
+        <div class="col-6">
+       <img src="{% static '/academy/images/login1.jpg' %}" style="width:780px; height:500px; margin-left: 80px;">
+
+        </div>
+        <div class="col-4 bg-secondary">
+    <form method="POST" action="/member_login/" style="float: left 20px;" class="needs-validation" novalidate >
+        {%csrf_token%}
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">UserID</label>
+        <input type="text"  required class="form-control" id="exampleFormControlInput1" name="userid" placeholder="Enter UserID">
+        <div class="invalid-feedback">
+            You Can't leave this field.
+          </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input type="password" required class="form-control" name="userpass" placeholder="Enter Your Password">
+        <div class="invalid-feedback">
+            You Can't leave this field.
+          </div>
+     </div>
+      
+     <button type="submit" class="btn btn-success "> Sign In</button>
+     <!-- <button type="submit" class="btn btn-primary " href="{{'academy/html/registration.html'}}"> Sign Up</button> -->
+    
+    </form>
+</div>
+</div>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+      <script src="{% static 'academy/js/validations.js' %}"> </script>
+</body>
+</html>

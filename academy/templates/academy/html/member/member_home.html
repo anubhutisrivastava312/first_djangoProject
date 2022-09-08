@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemberHome</title>
+</head>
+<body>
+    <!--navbar starts-->
+    {%include 'academy/html/member/member_navbar.html' %}
+    <!---navbar ends-->
+    
+    <div class="container">
+        <div class="row">
+          {% for m in member_data %}
+           
+           <div class="col-4">
+
+            <div class="card" style="width: 18rem;">
+              <!-- <img src="/media/{{ev.event_pic}}" class="card-img-top" alt="..."> -->
+              <div class="card-body">
+                <h5 class="card-title">{{m.name}}</h5>
+                <h5 class="card-title">{{m.age}}</h5>
+                <h5 class="card-title">{{m.phone}}</h5>
+                <h5 class="card-title">{{m.city}}</h5>
+                
+              
+                <!-- <a href="{{'academy/html/member/member_editprofile.html/'}}" class="btn btn-primary">Edit Profile</a> -->
+              </div>
+            </div>
+
+           </div>
+
+
+
+
+          {%endfor%}
+        </div>
+      </div>
+    <!-- <h1> Member Home Page</h1>
+    {% for m in member_data %}
+    <h2>Name is {{m.name}}</h2>
+    <h2>Age is {{m.age}}</h2>
+    <h2>Phone is {{m.phone}}</h2>
+    <h2>City is {{m.city}}</h2>
+    {%endfor%} -->
+
+</body>
+</html>
